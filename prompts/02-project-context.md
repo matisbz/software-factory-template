@@ -1,6 +1,6 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.0.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Versión de prompt: **2.1.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
 Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy aquí:
 
 - Nombre y propósito: <rellenar o dejar pendiente>
@@ -28,7 +28,8 @@ objetivos de negocio, usuarios, autorizaciones o restricciones a partir de carpe
 3. Te autorizo a usar los roles ya cargados cuando aporten valor: solution_designer para
    concretar alcance, architect para restricciones técnicas y uxui_designer si hay interfaz.
    Dales subtareas de análisis sin editar; tú integras y escribes el contexto. No necesitas
-   ejecutarlos todos. Hereda el modelo y esfuerzo de esta sesión. Si no están disponibles,
+   ejecutarlos todos. Usa el modelo y esfuerzo que tenga configurado cada rol; no los
+   reemplaces por los de la sesión ni edites sus TOML. Si los roles no están disponibles,
    comunica la limitación y realiza tú ese análisis, sin simular ejecuciones ni lanzar
    procesos, chats nuevos o APIs para sustituirlos. No reinstales agentes en este encargo.
 4. Registra fecha, fuentes verificadas, decisiones confirmadas y pendientes. No guardes

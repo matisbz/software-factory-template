@@ -1,5 +1,18 @@
 # Historial de versiones
 
+## 2.1.0 — 2026-10-16
+
+- Modelos y razonamiento explícitos por rol en bootstrap y actualización: Astra/high
+  para architect y pr_reviewer; GPT-6.1 Sol/high para solution_designer, uxui_designer,
+  developer y qa_engineer.
+- Orquestador: recomendación Astra/high en el selector de Codex, conservando el modelo
+  actual de la sesión y la configuración principal del proyecto.
+- Verificación de disponibilidad por cuenta antes de escribir; alternativas confirmadas
+  y herencia comunicada solo como último recurso.
+- Contexto y reglas del orquestador respetan el modelo configurado en cada subagente.
+- Conservación de modelos personalizados y comparación de huellas de los contenidos
+  resueltos. Catálogo local y catorce bloques TOML comprobados, sin inferencia.
+
 ## 2.0.0 — 2026-10-16
 
 - Repositorio central convertido en una biblioteca de prompts y documentación mínima.
