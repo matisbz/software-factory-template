@@ -1,6 +1,0 @@
-# Sintaxis oficial verificada el 2026-10-16.
-# Los seis roles se descubren en .codex/agents/*.toml.
-# Modelo, esfuerzo y permisos se heredan de la sesión de Codex.
-[agents]
-enabled = true
-max_concurrent_threads_per_session = 3
