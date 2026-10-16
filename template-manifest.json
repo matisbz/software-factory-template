@@ -1,0 +1,78 @@
+{
+  "files": {
+    ".codex/agents/architect.toml": {
+      "policy": "managed",
+      "sha256": "03eda568efce38ec0dd8cecc45b165d08470c071a181b16994c530fa58cfd985"
+    },
+    ".codex/agents/developer.toml": {
+      "policy": "managed",
+      "sha256": "0aaddb780918c42effe1cd5d9df8f5c85cf088f3fd1268f0ddb12b4a0f15bc85"
+    },
+    ".codex/agents/pr_reviewer.toml": {
+      "policy": "managed",
+      "sha256": "dda58d9a76265e4946db69a4856af79aaebb2b5bdb0ee039b618029e627adf71"
+    },
+    ".codex/agents/qa_engineer.toml": {
+      "policy": "managed",
+      "sha256": "398af2396960d537defc12df580b4c2b0fb0c73f9be7cc7ccd4c7accc6b753f4"
+    },
+    ".codex/agents/solution_designer.toml": {
+      "policy": "managed",
+      "sha256": "22da58a90441289e132d6345c2bbc9573302fce37fc962ba1f89cbd4611546bb"
+    },
+    ".codex/agents/uxui_designer.toml": {
+      "policy": "managed",
+      "sha256": "73e9a79b19baf2002fbaefe1ff58a785379b684d148670b9f98ebee4162b78ed"
+    },
+    ".codex/config.toml": {
+      "policy": "managed",
+      "sha256": "53ea4bbe861d710a03dc8d7c70577748878ec3418610c8fbb1de960c8eb96e47"
+    },
+    ".software-factory/.gitignore": {
+      "policy": "managed",
+      "sha256": "bd1703602b257b28b968f7eab03e2f30afae97105b47d67593e6850d27a4c58f"
+    },
+    "AGENTS.md": {
+      "policy": "block",
+      "sha256": "a74b746ec97702df71af3b9a1ae1e5a505a02527e15104ed613c2c57c796787a"
+    },
+    "docs/project/CONTEXT.md": {
+      "policy": "seed",
+      "sha256": "0e6de289a47cab9c09eb4d602426c9f9194ccb00781812fbe79515eed14c28f3"
+    },
+    "docs/software-factory/README.md": {
+      "policy": "managed",
+      "sha256": "375b6986440b12e9fbb55fc50d82e021b06f7a4b336cff5101af33485661ba15"
+    },
+    "docs/software-factory/WORKFLOW.md": {
+      "policy": "managed",
+      "sha256": "6773a6a7209effc0260effb20c653901967a75c674b9a56717194d1bb02ad57d"
+    },
+    "docs/software-factory/prompts/01-bootstrap.md": {
+      "policy": "managed",
+      "sha256": "144be407c5c6093ad0bc2137145d384ad1414572f3681535b2322c50067035d9"
+    },
+    "docs/software-factory/prompts/02-project-context.md": {
+      "policy": "managed",
+      "sha256": "9ce30fbbc197f45ac10a918de7f9fd6854ddac3842f3dc77922208f69b3b1ab1"
+    },
+    "docs/software-factory/templates/ADR.md": {
+      "policy": "managed",
+      "sha256": "4c386d7377d97179649b3166746769c70054ec17e7816cd7688672bda537f507"
+    },
+    "docs/software-factory/templates/HANDOFF.md": {
+      "policy": "managed",
+      "sha256": "8e62507953bc0d7cea92e510c3cc6041f0534677235508d8200b1935434372be"
+    },
+    "docs/software-factory/templates/REVIEW.md": {
+      "policy": "managed",
+      "sha256": "a05f678c64470ed7bf5e7cfc4d7b80ffd99d420a3fcaa72c854daeecf4652eac"
+    },
+    "docs/software-factory/templates/TASK.md": {
+      "policy": "managed",
+      "sha256": "63507d2db6fd9359ed953372df41764e077799833e06df5477d45f24bbd21553"
+    }
+  },
+  "schema": 1,
+  "version": "1.0.0"
+}
