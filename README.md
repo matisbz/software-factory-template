@@ -1,23 +1,31 @@
 # Software Factory: biblioteca de prompts
 
 Este repositorio privado mantiene **prompts completos para copiar y pegar** en sesiones
-de Codex Desktop dentro de cada proyecto. Versión actual: **2.1.0**.
+de Codex Desktop dentro de cada proyecto. Versión actual: **2.2.0**.
 
 ## Uso
 
-1. Abre tu proyecto destino en Codex, sea una carpeta nueva o una aplicación existente.
-2. Abre [01-bootstrap.md](prompts/01-bootstrap.md) en GitHub, pulsa **Copy raw file** y
-   pega TODO su contenido como mensaje en la sesión de ese proyecto. No necesitas clonar
-   este repositorio, indicar su ruta, descargar archivos ni ejecutar un instalador aparte.
-3. Codex crea los seis agentes y las reglas dentro del proyecto destino, preservando
-   personalizaciones. Revisa los pendientes que encuentre. Abre una conversación nueva
-   en la raíz del proyecto para cargar los archivos; confía en el proyecto mediante la
-   interfaz de Codex si es necesario tras revisarlos.
-4. Copia [02-project-context.md](prompts/02-project-context.md), rellena los campos que
-   conozcas y pégalo en esa nueva sesión. Codex documenta el contexto de ese producto.
-5. Para aplicar una versión posterior de la fábrica, copia el
-   [prompt de actualización](prompts/03-update-factory.md) vigente en una sesión del
-   proyecto destino. También incluye todos los contenidos: no necesita consultar otro archivo.
+1. Abre el proyecto destino en Codex, sea nuevo o existente.
+2. Copia TODO [01-bootstrap.md](prompts/01-bootstrap.md) mediante **Copy raw file** y
+   pégalo en su sesión. Codex instala la fábrica con el desarrollo bloqueado hasta que
+   apruebes explícitamente diseño y flujos. No necesitas clonar este repositorio.
+3. Revisa pendientes y abre una conversación nueva en la raíz para cargar las reglas;
+   confía en el proyecto mediante Codex si corresponde tras revisar los archivos.
+4. Rellena y pega [02-project-context.md](prompts/02-project-context.md). Preparará el
+   contexto y una primera tarea de diseño, sin implementar la aplicación.
+5. Copia y pega [04-design-and-approval.md](prompts/04-design-and-approval.md). Codex
+   prepara pantallas y recorridos revisables, presenta una versión y espera tu decisión.
+6. Cuando lo decidas, aprueba explícitamente **diseño Y flujos**, identificando versión
+   y alcance. Si ya encargaste desarrollar ese alcance, o lo encargas en ese mensaje,
+   comienza la implementación sin pedir otra autorización. Si únicamente pediste diseño
+   y no hay encargo de desarrollo, se registra la decisión y se espera ese encargo.
+
+Para un proyecto que ya tenía instalada la fábrica, pega primero
+[03-update-factory.md](prompts/03-update-factory.md) para aplicar también las reglas a
+los seis roles, y después el prompt 04. El actualizador conserva personalizaciones y
+aprobaciones vigentes; si hay conflictos que impidan persistir el límite, informa y deja
+la implementación bloqueada en esa sesión. Comprueba esos pendientes antes de continuar.
+Cada prompt es autónomo y contiene los documentos/configuraciones que requiere.
 
 ## Qué contiene este repositorio
 
@@ -28,7 +36,8 @@ software-factory-template/
 └── prompts/
     ├── 01-bootstrap.md
     ├── 02-project-context.md
-    └── 03-update-factory.md
+    ├── 03-update-factory.md
+    └── 04-design-and-approval.md
 ```
 
 La configuración de agentes está **dentro del texto de los prompts**. Los archivos TOML,
@@ -50,6 +59,29 @@ Cada definición completa aparece como bloque de contenido en 01-bootstrap.md y 
 actualizador. No depende de definiciones, scripts o plantillas en otro lugar del repo.
 El límite de referencia es tres subagentes concurrentes; Codex usa los roles pertinentes
 en varias tandas. La sesión o las políticas de la cuenta pueden imponer menos recursos.
+
+## Aprobación obligatoria antes de desarrollar
+
+El requisito afecta al orquestador y a los seis agentes, sin excepción para tareas
+pequeñas o para implementar backend, tests, scaffolding, dependencias o migraciones.
+Antes de aprobar se permiten análisis, documentación, maquetas y prototipos visuales
+en herramientas de diseño, sin crear código de la aplicación. Se conserva el código
+ya existente. Instalar/configurar la propia fábrica está permitido por el prompt solicitado.
+
+Cada versión de diseño contiene pantallas, estados, flujos, revisión y un manifiesto de
+artefactos. El registro conserva el mensaje real del usuario, su fuente, la versión, el
+alcance y la huella de lo aprobado. Un approved escrito en un documento no es suficiente
+sin evidencia humana verificable. «Me gusta», silencio y ejemplos no conceden autorización.
+
+Si cambia materialmente lo aprobado, se presenta una versión nueva y se espera su
+aprobación. Una aprobación vigente no se pide otra vez para el mismo alcance; corregir
+la implementación para ajustarse al diseño aprobado tampoco necesita aprobarlo de nuevo.
+La actualización de la fábrica no aprueba diseños ni invalida una aprobación válida por sí sola.
+
+La política y el registro se crean en docs/uxui/ del proyecto destino. Es un control de
+proceso mediante instrucciones y evidencia, no un sandbox ni una opción nativa de permisos.
+Si las reglas no se pudieron aplicar o faltan documentos/evidencia, debe indicarse el
+bloqueo y sus pendientes, en vez de afirmar que ya está autorizado desarrollar.
 
 ## Modelos asignados
 
@@ -124,11 +156,14 @@ Para comprobar la activación en una conversación nueva del destino, puedes ped
 Edita el texto en esta biblioteca y versiona las mejoras. Mantén idéntico el contenido
 literal de la fábrica en bootstrap y actualizador para una misma versión. Actualiza
 las versiones dentro de los prompts y CHANGELOG.md. Comprueba la sintaxis de los bloques,
-la ausencia de dependencias externas y las reglas de conservación antes de publicar.
+la ausencia de dependencias externas y las reglas de conservación antes de publicar. Mantén sincronizada la política entre
+bootstrap, actualización y diseño, y el contexto compartido con el segundo prompt.
 
-Se revisaron los tres prompts y se parsearon los catorce bloques TOML incluidos.
+Se revisaron los cuatro prompts, la sincronización de política y registros y los
+catorce bloques TOML incluidos. Se comprobó que todos los roles contienen el límite de
+aprobación y que los registros nuevos empiezan pending sin evidencia inventada.
 El catálogo local de Codex consultado el 2026-10-16 lista gpt-6-astra y gpt-6.1-sol,
 ambos con high. No se realizó inferencia ni se asumió disponibilidad en otras cuentas. No se ha ejecutado
-una instalación mediante inferencia para validar la versión 2.1; se comprueba en la sesión
+una instalación mediante inferencia para validar la versión 2.2; se comprueba en la sesión
 destino. Las 31 pruebas automatizadas de la versión 1 pertenecen a su instalador anterior.
-La release v1.0.0 queda como historial: para copiar los prompts actuales usa main o v2.1.0.
+La release v1.0.0 queda como historial: para copiar los prompts actuales usa main o v2.2.0.

@@ -1,5 +1,20 @@
 # Historial de versiones
 
+## 2.2.0 — 2026-10-16
+
+- Nuevo prompt autónomo 04-design-and-approval.md para preparar diseños y recorridos
+  revisables, presentar una versión y registrar exclusivamente la decisión auténtica del usuario.
+- Bootstrap y actualización incluyen política persistente y registro inicial pending;
+  el contexto exige aprobación y propone trabajo de diseño antes de implementación.
+- Orquestador y seis roles bloquean aplicación, tests de implementación, scaffolding,
+  dependencias, servicios y migraciones hasta aprobación explícita de diseño Y flujos.
+- Aprobación vinculada a versión, alcance, evidencia humana y huella de artefactos congelados;
+  cambios materiales requieren revisión nueva. No hay aprobación automática por instalar.
+- Conservación de personalizaciones y aprobaciones válidas; conflictos o datos ausentes
+  mantienen el desarrollo bloqueado y se comunican, sin afirmar activación completa.
+- Revisión estática de contenidos, registros pendientes, sincronización y catorce TOML.
+  El repositorio central conserva únicamente cuatro prompts, README y CHANGELOG.
+
 ## 2.1.0 — 2026-10-16
 
 - Modelos y razonamiento explícitos por rol en bootstrap y actualización: Astra/high

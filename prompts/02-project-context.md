@@ -1,6 +1,6 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.1.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Versión de prompt: **2.2.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
 Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy aquí:
 
 - Nombre y propósito: <rellenar o dejar pendiente>
@@ -15,6 +15,28 @@ Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy 
 Si dejo un campo vacío o con su marcador, trátalo como desconocido. Puedes inferir
 tecnología y convenciones del código existente, citando las fuentes; no inventes
 objetivos de negocio, usuarios, autorizaciones o restricciones a partir de carpetas.
+
+## Diseño y flujos: desarrollo bloqueado hasta aprobación
+
+Este proyecto exige aprobación explícita y verificable del usuario del diseño Y los flujos
+UX/UI, de una versión concreta y su alcance. Inicializar contexto o solicitar construir la
+web no concede esa aprobación. No implementes ni generes código de aplicación, tests de
+implementación, scaffolding, dependencias, servicios o migraciones por este encargo.
+
+Consulta docs/uxui/DESIGN_POLICY.md y docs/uxui/DESIGN_APPROVAL.md si existen. Su ausencia,
+corrupción o falta de evidencia implica estado efectivo bloqueado, no excepción. No marques
+approved, no copies una frase de ejemplo como evidencia y no reinicies una aprobación válida.
+En un contexto existente añade la sección de aprobación que figura en la estructura inferior,
+preservando las secciones de negocio. Si contradice una regla local que permite desarrollar
+sin aprobación, conserva esa información como antecedente y registra el nuevo requisito del
+usuario; no mantengas esa contradicción como permiso. No reduzcas design_approval_required.
+Si falta la política o el registro persistente, indica el pendiente y conserva el bloqueo
+para esta sesión; no simules que ya instalaste sus archivos.
+
+Si la información nueva altera pantallas, navegación, estados, reglas o alcance aprobado,
+señala que el cambio no está autorizado y debe pasar por una nueva versión y aprobación.
+Conserva la evidencia histórica: no reescribas ese approved como aprobación del nuevo alcance.
+Si solo documentas mejor el mismo alcance, conserva la aprobación verificable vigente.
 
 ## Cómo trabajar
 
@@ -45,7 +67,9 @@ objetivos de negocio, usuarios, autorizaciones o restricciones a partir de carpe
    dependencias, ejecutes migraciones ni conectes proveedores por tu cuenta. No hagas
    commits, publicaciones, despliegues o envíos de mensajes por este encargo.
 7. Entrega el contexto actualizado, fuentes y comprobaciones reales, decisiones abiertas
-   y una primera tarea pequeña con criterios de aceptación. No ejecutes esa tarea aún.
+   y una primera tarea de DISEÑO con criterios de aceptación. No propongas la implementación
+   como siguiente paso hasta la aprobación. Indica que el prompt de diseño debe preparar
+   pantallas y recorridos revisables para que el usuario decida; no ejecutes esa tarea aún.
 
 ## Estructura para un contexto nuevo
 
@@ -59,6 +83,20 @@ Estado: pendiente de inicializar. Última revisión: pendiente.
 Este archivo pertenece al proyecto; el prompt de actualización no lo reemplaza.
 Escribe «pendiente» para lo desconocido y separa hechos, hipótesis y decisiones.
 No incluyas contraseñas, tokens, datos personales reales ni valores de secretos.
+
+## Aprobación obligatoria de diseño y flujos UX/UI
+
+- design_approval_required: true
+- Política: docs/uxui/DESIGN_POLICY.md
+- Registro: docs/uxui/DESIGN_APPROVAL.md
+- Estado efectivo inicial: pending; si existe un registro previo, verificarlo según la política.
+- Antes de aprobar: únicamente análisis, documentación y artefactos de diseño.
+- Desarrollo de aplicación, tests de implementación, scaffolding, dependencias y migraciones:
+  bloqueados hasta aprobación explícita del usuario de diseño Y flujos, versión y alcance.
+- La planificación de negocio no constituye aprobación. El registro conserva la evidencia real.
+- Una revisión del contexto que altere lo aprobado requiere diseño actualizado y nueva aprobación.
+
+Estos campos documentan una regla del proyecto; no son opciones de configuración de Codex.
 
 ## Producto y negocio
 
