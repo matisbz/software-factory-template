@@ -1,6 +1,6 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.2.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Versión de prompt: **2.3.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
 Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy aquí:
 
 - Nombre y propósito: <rellenar o dejar pendiente>
@@ -48,7 +48,8 @@ Si solo documentas mejor el mismo alcance, conserva la aprobación verificable v
    supuestos y preguntas abiertas. Haz solo preguntas que bloqueen una decisión importante
    y avanza en el resto; escribe «pendiente» en lo que no puedas determinar.
 3. Te autorizo a usar los roles ya cargados cuando aporten valor: solution_designer para
-   concretar alcance, architect para restricciones técnicas y uxui_designer si hay interfaz.
+   concretar alcance, architect para restricciones técnicas, uxui_designer si hay interfaz
+   y backend_engineer para analizar datos, contratos y entornos si el proyecto lo necesita.
    Dales subtareas de análisis sin editar; tú integras y escribes el contexto. No necesitas
    ejecutarlos todos. Usa el modelo y esfuerzo que tenga configurado cada rol; no los
    reemplaces por los de la sesión ni edites sus TOML. Si los roles no están disponibles,
@@ -118,6 +119,9 @@ Estos campos documentan una regla del proyecto; no son opciones de configuració
 - Lenguajes, frameworks, versiones y fuentes de versión:
 - Módulos, responsabilidades y contratos:
 - Datos, persistencia, migraciones e integraciones:
+- Backend/proveedor confirmado y responsabilidades de aplicación/backend:
+- Referencias de proyecto por entorno y conexiones autorizadas (sin credenciales):
+- Ubicación de migraciones, historial y procedimiento de aplicación/verificación:
 - Sistema de UI, accesibilidad y dispositivos:
 - Entornos y límites entre desarrollo, pruebas y producción:
 
@@ -133,6 +137,6 @@ Estos campos documentan una regla del proyecto; no son opciones de configuració
 
 - Seguridad y privacidad aplicables:
 - Presupuesto, plazos y límites técnicos:
-- Acciones externas ya autorizadas:
+- Acciones externas ya autorizadas (operación, proyecto y entorno; incluidas escrituras de backend):
 - Preguntas abiertas con impacto y responsable:
 ```

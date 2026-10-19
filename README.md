@@ -1,7 +1,7 @@
 # Software Factory: biblioteca de prompts
 
 Este repositorio privado mantiene **prompts completos para copiar y pegar** en sesiones
-de Codex Desktop dentro de cada proyecto. Versión actual: **2.2.0**.
+de Codex Desktop dentro de cada proyecto. Versión actual: **2.3.0**.
 
 ## Uso
 
@@ -22,7 +22,7 @@ de Codex Desktop dentro de cada proyecto. Versión actual: **2.2.0**.
 
 Para un proyecto que ya tenía instalada la fábrica, pega primero
 [03-update-factory.md](prompts/03-update-factory.md) para aplicar también las reglas a
-los seis roles, y después el prompt 04. El actualizador conserva personalizaciones y
+los siete roles, y después el prompt 04. El actualizador conserva personalizaciones y
 aprobaciones vigentes; si hay conflictos que impidan persistir el límite, informa y deja
 la implementación bloqueada en esa sesión. Comprueba esos pendientes antes de continuar.
 Cada prompt es autónomo y contiene los documentos/configuraciones que requiere.
@@ -51,7 +51,8 @@ prompt. La biblioteca central no instala ni ejecuta agentes por sí misma.
 | architect | Arquitectura y decisiones técnicas |
 | solution_designer | Requisitos y diseño de la solución |
 | uxui_designer | Experiencia de usuario, interfaz y accesibilidad |
-| developer | Implementación delimitada |
+| developer | Aplicación, interfaz e integración con el backend |
+| backend_engineer | APIs, datos, autenticación y migraciones; especialización en Supabase |
 | qa_engineer | Validación y regresiones |
 | pr_reviewer | Revisión del cambio final |
 
@@ -60,9 +61,34 @@ actualizador. No depende de definiciones, scripts o plantillas en otro lugar del
 El límite de referencia es tres subagentes concurrentes; Codex usa los roles pertinentes
 en varias tandas. La sesión o las políticas de la cuenta pueden imponer menos recursos.
 
+## Backend y Supabase
+
+`backend_engineer` es un rol incluido en la configuración y usado solo cuando hay trabajo
+significativo de backend. `architect` define límites y contratos; el especialista implementa
+APIs, persistencia, autenticación y migraciones; `developer` integra esos contratos en la
+aplicación. QA y `pr_reviewer` mantienen la revisión independiente. No se añade un agente
+por rutina ni se aumenta el límite de tres subagentes concurrentes.
+
+Si el proyecto utiliza Supabase, el especialista usa las skills y herramientas disponibles
+para Database, Auth, RLS, Storage, Realtime y Edge Functions. No elige Supabase por defecto
+ni necesita un rol separado de data engineering para estas tareas. La instalación de la
+fábrica no instala plugins, conecta servicios ni ejecuta operaciones de base de datos.
+
+Los cambios de esquema quedan en migraciones versionadas antes de aplicarse en un entorno
+compartido. Cada operación identifica proyecto, entorno y autorización; hay un único escritor
+por base de datos/entorno. Las pruebas usan datos sintéticos fuera de producción y verifican
+tanto accesos permitidos como denegados. Preparar una migración no implica haberla aplicado
+ni autoriza su ejecución remota. Se respetan las autorizaciones existentes para su alcance.
+
+El rol hereda las herramientas y permisos de la sesión: su nombre no crea aislamiento.
+Supabase permite limitar una conexión MCP a un proyecto o a solo lectura; esa configuración
+se gestiona en la conexión, no dentro del TOML del subagente.
+Fuentes: [agentes de Codex](https://learn.chatgpt.com/docs/agent-configuration/subagents)
+y [MCP de Supabase](https://supabase.com/docs/guides/ai-tools/mcp#configuration-options).
+
 ## Aprobación obligatoria antes de desarrollar
 
-El requisito afecta al orquestador y a los seis agentes, sin excepción para tareas
+El requisito afecta al orquestador y a los siete agentes, sin excepción para tareas
 pequeñas o para implementar backend, tests, scaffolding, dependencias o migraciones.
 Antes de aprobar se permiten análisis, documentación, maquetas y prototipos visuales
 en herramientas de diseño, sin crear código de la aplicación. Se conserva el código
@@ -92,6 +118,7 @@ bloqueo y sus pendientes, en vez de afirmar que ya está autorizado desarrollar.
 | solution_designer | gpt-6.1-sol | high |
 | uxui_designer | gpt-6.1-sol | high |
 | developer | gpt-6.1-sol | high |
+| backend_engineer | gpt-6.1-sol | high |
 | qa_engineer | gpt-6.1-sol | high |
 | pr_reviewer | gpt-6-astra | high |
 
@@ -100,9 +127,9 @@ para diseño, implementación y validación. Esta distribución es una decisión
 para la biblioteca, apoyada en la documentación oficial; no es una asignación oficial
 de OpenAI por puesto. El razonamiento high es el punto de partida de esta versión.
 
-Los seis TOML incluidos en bootstrap y actualización contienen `model` y
+Los siete TOML incluidos en bootstrap y actualización contienen `model` y
 `model_reasoning_effort`. Para el orquestador, selecciona GPT-6 Astra y razonamiento
-alto en Codex cuando estén disponibles: es la sesión principal, no un séptimo subagente.
+alto en Codex cuando estén disponibles: es la sesión principal, no un subagente adicional.
 El prompt conserva el modelo actual de esa sesión y los ajustes principales del proyecto.
 
 La disponibilidad se comprueba antes de instalar. Si falta el modelo deseado, se usa
@@ -128,7 +155,7 @@ de un programa determinista. Cada ejecución debe informar de lo aplicado y lo p
 
 ## Compatibilidad y modelos
 
-Se usa la sintaxis oficial revisada el **16 de octubre de 2026**: TOML independientes
+Se usa la sintaxis oficial revisada el **19 de octubre de 2026**: TOML independientes
 con `name`, `description` y `developer_instructions` en `.codex/agents/` del destino.
 El config base usa `agents.enabled` y `agents.max_concurrent_threads_per_session`.
 Cada TOML de subagente incluye `model` y `model_reasoning_effort`. Los permisos y
@@ -160,10 +187,12 @@ la ausencia de dependencias externas y las reglas de conservación antes de publ
 bootstrap, actualización y diseño, y el contexto compartido con el segundo prompt.
 
 Se revisaron los cuatro prompts, la sincronización de política y registros y los
-catorce bloques TOML incluidos. Se comprobó que todos los roles contienen el límite de
-aprobación y que los registros nuevos empiezan pending sin evidencia inventada.
+dieciséis bloques TOML incluidos (siete roles y un config en cada prompt). Se comprobó
+que todos los roles contienen el límite de aprobación y que los registros nuevos
+empiezan pending sin evidencia inventada.
 El catálogo local de Codex consultado el 2026-10-16 lista gpt-6-astra y gpt-6.1-sol,
 ambos con high. No se realizó inferencia ni se asumió disponibilidad en otras cuentas. No se ha ejecutado
-una instalación mediante inferencia para validar la versión 2.2; se comprueba en la sesión
+una instalación mediante inferencia para validar la versión 2.3; se comprueba en la sesión
 destino. Las 31 pruebas automatizadas de la versión 1 pertenecen a su instalador anterior.
-La release v1.0.0 queda como historial: para copiar los prompts actuales usa main o v2.2.0.
+La release v1.0.0 queda como historial. Para incorporar esta versión a un proyecto ya
+instalado, copia el prompt 03 en su sesión. Editar esta biblioteca no actualiza los proyectos.

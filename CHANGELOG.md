@@ -1,5 +1,20 @@
 # Historial de versiones
 
+## 2.3.0 — 2026-10-19
+
+- Séptimo rol backend_engineer, con GPT-6.1 Sol/high y especialización en Supabase
+  cuando lo utiliza el proyecto; se conserva el máximo de tres subagentes concurrentes.
+- Reparto explícito entre arquitectura, backend y aplicación, con contratos compartidos
+  y un único escritor por archivo y base de datos/entorno.
+- Migraciones versionadas, identificación de destino y alcance autorizado antes de operar,
+  y comprobación de permisos con identidades representativas y datos sintéticos.
+- Contexto y fase de diseño incorporan análisis de backend. Los siete roles conservan
+  el bloqueo de implementación hasta aprobación verificable de diseño y flujos.
+- Bootstrap y actualización incluyen la definición completa; se conservan personalizaciones,
+  borrados y aprobaciones existentes. La biblioteca no instala ni conecta servicios reales.
+- Validados dieciséis bloques TOML, sincronización de contenidos y conservación del bloqueo;
+  no se ha ejecutado una instalación en un proyecto destino ni probado operaciones remotas.
+
 ## 2.2.0 — 2026-10-16
 
 - Nuevo prompt autónomo 04-design-and-approval.md para preparar diseños y recorridos

@@ -1,6 +1,6 @@
 # Diseñar y obtener aprobación de los flujos UX/UI antes de desarrollar
 
-Versión de prompt y política: **2.2.0**. Trabaja en el proyecto local de ESTA sesión.
+Versión de prompt y política: **2.3.0**. Trabaja en el proyecto local de ESTA sesión.
 Quiero revisar y aprobar explícitamente el diseño Y los flujos UX/UI antes de que se
 implemente nada de la aplicación. Este prompt es autónomo: contiene las reglas y los
 registros necesarios; no necesitas clonar ni consultar la biblioteca de prompts.
@@ -41,7 +41,7 @@ los documentos de control ni afirmes que su persistencia está resuelta.
      respeta el borrado y comunica el pendiente; no inventes una aprobación para sustituirlo.
 4. Haz que la regla persista en AGENTS.md sin alterar normas específicas: si el archivo
    ya tiene la sección completa «Aprobación obligatoria de diseño y flujos UX/UI» instalada
-   por la versión 2.2 o un bloque design-gate con las mismas reglas, no añadas otro.
+   por la versión 2.2 o posterior, o un bloque design-gate con las mismas reglas, no añadas otro.
    En caso contrario, añade al final el bloque AGENTS que se incluye abajo y guarda copia.
    Si un bloque previo está personalizado, conserva y propone; no lo reemplaces sin base
    reconocible. No dupliques marcadores ni declares activación persistente completa cuando
@@ -65,7 +65,7 @@ los documentos de control ni afirmes que su persistencia está resuelta.
    registra DESIGN_APPROVAL.md como seed. Si añades un bloque fuera del bloque factory de
    AGENTS, no cambies la huella de factory: registra solo esa adición por separado si hace
    falta, conservando los contenidos anteriores. No reclames propiedad sobre personalizaciones.
-   No cambies la versión instalada a 2.2 por haber ejecutado únicamente este prompt.
+   No cambies la versión instalada de la fábrica por haber ejecutado únicamente este prompt.
    Si el estado está corrupto, no lo ignores; prepara diseño sin sobrescribirlo, informa
    y deja pendiente la persistencia. No declares que futuros chats cargarán una regla no aplicada.
 
@@ -76,13 +76,16 @@ Coordina los roles disponibles con sus modelos configurados, sin forzar otros mo
 - solution_designer: objetivos, alcance, pantallas y recorridos, reglas y aceptación.
 - uxui_designer: diseño visual y estados responsive/accesibles; artefactos revisables.
 - architect: viabilidad, dependencias y restricciones, solo análisis técnico.
+- backend_engineer: viabilidad de datos, contratos, acceso y servicios; solo análisis,
+  sin crear esquemas, migraciones ni ejecutar escrituras remotas.
 - qa_engineer: revisión de coherencia de recorridos, estados y accesibilidad, sin tests
   de implementación ni comandos que generen código o cambien la aplicación.
 - pr_reviewer: revisión del paquete de diseño y sus pendientes cuando aporte valor.
 
-No asignes implementación a developer ni la hagas tú durante esta fase. Delega únicamente
-análisis o artefactos de diseño con propiedad exclusiva de sus archivos. Si no aparecen
-roles/herramientas, informa y realiza tú el trabajo de diseño posible, conservando el
+No asignes implementación a developer, backend_engineer ni a ningún otro rol durante esta
+fase, ni la hagas tú. Delega únicamente análisis o artefactos de diseño con propiedad
+exclusiva de sus archivos. Si no aparecen roles/herramientas, informa y realiza tú el
+trabajo de diseño posible, conservando el
 mismo bloqueo. No crees nuevos agentes, procesos Codex anidados, chats separados, SDKs,
 servicios, claves ni APIs de pago para simularlos. No hagas commits, pushes o publicaciones.
 
@@ -183,7 +186,7 @@ Estos campos documentan una regla del proyecto; no son opciones de configuració
 ```markdown
 # Política de aprobación de diseño y flujos UX/UI
 
-Versión de política: 2.2.0. Este es un acuerdo de trabajo del proyecto, no una opción
+Versión de política: 2.3.0. Este es un acuerdo de trabajo del proyecto, no una opción
 nativa de permisos de Codex. Obliga al orquestador y a todos los subagentes.
 
 ## Condición obligatoria para implementar
@@ -297,10 +300,11 @@ Si se pidió únicamente diseño y no existe encargo de desarrollar, registra la
 espera ese encargo sin preguntar otra vez por lo ya aprobado. No existe autorización automática
 para despliegues, publicaciones, envíos, cambios destructivos o servicios de pago.
 
-Asigna a developer una parte delimitada, la versión y evidencia de aprobación, los
-archivos exclusivos y criterios de aceptación. Developer verifica la condición por sí
-mismo; QA y revisión comprueban conformidad con la versión aprobada. Si falta aprobación,
-ningún agente ni el orquestador implementa como sustitución o delega a otro para eludirla.
+Asigna a developer o backend_engineer la parte correspondiente, la versión y evidencia
+de aprobación, los archivos exclusivos y criterios de aceptación. Cada implementador
+verifica la condición por sí mismo; QA y revisión comprueban conformidad con la versión
+aprobada. Si falta aprobación, ningún agente ni el orquestador implementa como sustitución
+o delega a otro para eludirla.
 ```
 
 ### Archivo: `docs/uxui/DESIGN_APPROVAL.md`
