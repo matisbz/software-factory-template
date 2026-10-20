@@ -1,6 +1,6 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.4.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Versión de prompt: **2.5.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
 Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy aquí:
 
 - Nombre y propósito: <rellenar o dejar pendiente>
@@ -38,6 +38,50 @@ señala que el cambio no está autorizado y debe pasar por una nueva versión y 
 Conserva la evidencia histórica: no reescribas ese approved como aprobación del nuevo alcance.
 Si solo documentas mejor el mismo alcance, conserva la aprobación verificable vigente.
 
+## Flujo Git obligatorio por tarea
+
+Cada tarea que modifique archivos del proyecto debe trabajar en una rama propia
+`codex/<descripcion-de-la-tarea>` y terminar con una pull request hacia `main`, solo
+cuando `pr_reviewer` haya revisado el cambio final y lo declare conforme. Se aplica
+incluso a documentación, configuración de la fábrica y tareas pequeñas. Una consulta
+sin cambios no requiere rama ni PR vacías. Las continuaciones de la misma tarea usan
+su rama y PR existentes; una tarea distinta no reutiliza una rama de otro encargo.
+
+El orquestador coordina este flujo:
+
+1. Antes de editar, comprueba raíz real, estado de Git, remoto y rama. Actualiza la
+   referencia remota de `main` y crea la rama desde ella; no trabajes ni hagas commits
+   directamente en `main`. Conserva cambios ajenos y aísla el trabajo si el checkout
+   está ocupado; no los arrastres a la rama ni uses reset, stash o force-push para limpiarlo.
+2. Implementa únicamente el alcance autorizado y ejecuta las comprobaciones pertinentes.
+   Esta regla no elimina el requisito de aprobación de diseño y flujos ni autoriza
+   implementar por el mero hecho de crear una rama.
+3. Prepara commits solo con los archivos de la tarea y solicita a `pr_reviewer` una
+   revisión independiente, sin editar, del diff completo contra `main`. Identifica los
+   SHA de base y HEAD y facilita alcance, criterios y resultados de validación.
+4. Corrige todos los hallazgos pendientes y repite la revisión hasta recibir un dictamen
+   explícito de CONFORME, sin hallazgos abiertos ni comprobaciones necesarias pendientes.
+   Un resultado incompleto, la falta de revisor o la autorrevisión del implementador no
+   sustituyen ese dictamen. Si cambia el contenido, los commits o la base revisados,
+   vuelve a validar lo afectado y solicita revisión de la versión final.
+5. Con revisión conforme, verifica que los SHA siguen vigentes, que no quedan cambios
+   de la tarea sin incluir y que el diff no contiene archivos ajenos, secretos ni temporales.
+   Sube la rama y crea la PR con base `main`; si ya existe para esta tarea, actualízala.
+   Incluye resumen, validación y dictamen con los SHA revisados. Comprueba base y HEAD
+   remotos y entrega el enlace real; no declares una PR creada si la operación falló.
+
+Este encargo autoriza al orquestador a crear la rama, hacer commits, subirla y abrir o
+actualizar la PR de la tarea en el remoto del proyecto sin pedir otra confirmación.
+No autoriza fusionar la PR, activar auto-merge, hacer push directo a `main` ni desplegar.
+La revisión del agente es un requisito previo a crear la PR y no equivale a un APPROVE
+publicado en GitHub. Los subagentes no gestionan ramas ni publican por iniciativa propia.
+
+Si faltan Git, `main`, un remoto inequívoco, acceso de escritura o un revisor independiente,
+explica el impedimento y deja pendiente el paso afectado; no inventes revisiones ni eludas
+el flujo publicando sin conformidad. En una carpeta sin Git se permite preparar los archivos
+locales del encargo, comunicando que rama y PR quedan pendientes; no crees un repositorio
+remoto ni cambies su configuración para resolverlo por tu cuenta.
+
 ## Cómo trabajar
 
 1. Identifica la raíz del proyecto de esta sesión y lee las instrucciones aplicables,
@@ -65,8 +109,8 @@ Si solo documentas mejor el mismo alcance, conserva la aprobación verificable v
    los bytes antes de reemplazar mediante un archivo temporal en el mismo directorio.
    Conserva permisos y cambios ajenos. No reemplaces secciones de negocio por el ejemplo.
 6. No implementes funcionalidades, cambies configuración, elijas un stack nuevo, añadas
-   dependencias, ejecutes migraciones ni conectes proveedores por tu cuenta. No hagas
-   commits, publicaciones, despliegues o envíos de mensajes por este encargo.
+   dependencias, ejecutes migraciones ni conectes proveedores por tu cuenta. Aplica el flujo
+   Git obligatorio al cambio de contexto; no despliegues ni envíes mensajes por este encargo.
 7. Entrega el contexto actualizado, fuentes y comprobaciones reales, decisiones abiertas
    y una primera tarea de DISEÑO con criterios de aceptación. No propongas la implementación
    como siguiente paso hasta la aprobación. Indica que el prompt de diseño debe preparar
@@ -135,7 +179,9 @@ Estos campos documentan una regla del proyecto; no son opciones de configuració
 - Comandos reales de ejecución, pruebas, formato y compilación:
 - Datos de prueba y servicios requeridos:
 - Criterios de aceptación y definición de terminado:
-- Convenciones de ramas, commits y revisión:
+- Convenciones de ramas, commits y revisión: una rama codex/<tarea> por tarea con cambios;
+  revisión independiente conforme de pr_reviewer sobre base y HEAD finales antes de abrir
+  o actualizar una PR hacia main. Sin push directo a main ni fusión automática.
 
 ## Restricciones y decisiones abiertas
 

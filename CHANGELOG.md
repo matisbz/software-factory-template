@@ -2,6 +2,17 @@
 
 ## Sin publicar
 
+## 2.5.0 — 2026-10-20
+
+- Rama propia por tarea con cambios y pull request hacia main únicamente después de
+  revisión independiente conforme de pr_reviewer sobre el diff final.
+- Corrección y nueva revisión de hallazgos; dictamen ligado a SHA de base y HEAD,
+  invalidado si cambia la versión revisada. Sin autorrevisión como sustituto.
+- Autorización de rama, commits, push y PR para el orquestador; sin fusión automática,
+  push directo a main ni despliegue. Continuaciones reutilizan rama y PR de su tarea.
+- Flujo sincronizado en los cuatro prompts, AGENTS y siete roles; faltas de Git, remoto,
+  main, acceso o revisor se comunican como pendientes sin fingir una PR completada.
+
 ## 2.4.0 — 2026-10-20
 
 - Limpieza de scripts auxiliares y outputs temporales al terminar cada prueba, también

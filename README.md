@@ -1,7 +1,7 @@
 # Software Factory: biblioteca de prompts
 
 Este repositorio privado mantiene **prompts completos para copiar y pegar** en sesiones
-de Codex Desktop dentro de cada proyecto. Versión actual: **2.4.0**.
+de Codex Desktop dentro de cada proyecto. Versión actual: **2.5.0**.
 
 ## Uso
 
@@ -60,6 +60,25 @@ Cada definición completa aparece como bloque de contenido en 01-bootstrap.md y 
 actualizador. No depende de definiciones, scripts o plantillas en otro lugar del repo.
 El límite de referencia es tres subagentes concurrentes; Codex usa los roles pertinentes
 en varias tandas. La sesión o las políticas de la cuenta pueden imponer menos recursos.
+
+## Una rama y una PR por tarea
+
+Cada tarea con cambios, incluida documentación o configuración, usa una rama
+`codex/<descripcion-de-la-tarea>` creada desde `main` actualizada. Tras implementar y
+validar, `pr_reviewer` revisa el diff completo de los commits finales. Se corrigen los
+hallazgos y se repite la revisión hasta obtener un dictamen **CONFORME**.
+
+Solo entonces el orquestador sube la rama y abre la pull request con destino **`main`**,
+sin pedir otra confirmación para esos pasos. Entrega el enlace, la validación y los SHA
+revisados. Si cambia el contenido, los commits o la base, hay que volver a revisar.
+Las continuaciones mantienen la misma rama y PR; las consultas sin cambios no generan PR.
+No se fusiona automáticamente ni se hace push directo a `main`.
+
+Los cuatro prompts aplican este flujo. Bootstrap y actualización lo instalan en el bloque
+de `AGENTS.md` y en los siete roles, conservando personalizaciones. Si falta acceso, remoto,
+`main` o revisión independiente, se informa del paso pendiente sin simular su cumplimiento.
+Una carpeta sin Git puede recibir archivos locales, pero rama y PR quedan pendientes.
+La conformidad técnica no sustituye la aprobación humana del diseño y los flujos.
 
 ## Backend y Supabase
 
@@ -214,7 +233,7 @@ que todos los roles contienen el límite de aprobación y que los registros nuev
 empiezan pending sin evidencia inventada.
 El catálogo local de Codex consultado el 2026-10-16 lista gpt-6-astra y gpt-6.1-sol,
 ambos con high. No se realizó inferencia ni se asumió disponibilidad en otras cuentas. No se ha ejecutado
-una instalación mediante inferencia para validar la versión 2.4; se comprueba en la sesión
+una instalación mediante inferencia para validar la versión 2.5; se comprueba en la sesión
 destino. Las 31 pruebas automatizadas de la versión 1 pertenecen a su instalador anterior.
 La release v1.0.0 queda como historial. Para incorporar esta versión a un proyecto ya
 instalado, copia el prompt 03 en su sesión. Editar esta biblioteca no actualiza los proyectos.
