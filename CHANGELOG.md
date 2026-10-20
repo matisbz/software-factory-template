@@ -2,6 +2,21 @@
 
 ## Sin publicar
 
+## 2.7.0 — 2026-10-20
+
+- Prompt opcional 04-design-package.md para encargar o refinar un paquete UX/UI; el
+  contexto y los encargos directos siguen activando el procedimiento integrado.
+- uxui_designer incorpora dirección artística, selección condicional de Impeccable,
+  Frontend Design, UI UX Pro Max y Emil, y revisión de artefactos con evidencias.
+- Método integrado sin dependencias externas: referencias, alternativas proporcionales,
+  sistema visual reproducible, estados, movimiento y revisión antes de aprobar.
+- Contexto ampliado con identidad, libertad visual y referencias. Developer y QA
+  comprueban fidelidad a la especificación aprobada, respetando la retención de visuales.
+- Bootstrap y actualizador mantienen los mismos contenidos. Nombrar skills no las
+  instala: no se añaden hooks, ejecutables, servicios ni fuentes de diseño paralelas.
+- Validados dieciséis bloques TOML, sincronización literal, contexto compartido y
+  enlaces locales. Sin instalación en proyecto destino ni evaluación práctica de diseños.
+
 ## 2.6.0 — 2026-10-20
 
 - Procedimiento completo de diseño y aprobación integrado en la política que instalan

@@ -1,7 +1,7 @@
 # Software Factory: biblioteca de prompts
 
 Este repositorio privado mantiene **prompts completos para copiar y pegar** en sesiones
-de Codex Desktop dentro de cada proyecto. Versión actual: **2.6.0**.
+de Codex Desktop dentro de cada proyecto. Versión actual: **2.7.0**.
 
 ## Uso
 
@@ -21,6 +21,11 @@ de Codex Desktop dentro de cada proyecto. Versión actual: **2.6.0**.
    comienza la implementación sin pedir otra autorización. Si únicamente pediste diseño
    y no hay encargo de desarrollo, se registra la decisión y se espera ese encargo.
 
+Para encargar o refinar expresamente un paquete visual, puedes copiar
+[04-design-package.md](prompts/04-design-package.md). Es una entrada opcional al mismo
+procedimiento, no un paso adicional obligatorio. Requiere la política de diseño que
+instalan 01/03 en la versión 2.7.0 o una posterior compatible.
+
 Para un proyecto que ya tenía instalada la fábrica, pega primero
 [03-update-factory.md](prompts/03-update-factory.md) para instalar el procedimiento integrado
 conservando las reglas de los siete roles. Después, aporta o actualiza el contexto o pide
@@ -39,7 +44,8 @@ software-factory-template/
 └── prompts/
     ├── 01-bootstrap.md
     ├── 02-project-context.md
-    └── 03-update-factory.md
+    ├── 03-update-factory.md
+    └── 04-design-package.md
 ```
 
 La configuración de agentes está **dentro del texto de los prompts**. Los archivos TOML,
@@ -63,6 +69,38 @@ actualizador. No depende de definiciones, scripts o plantillas en otro lugar del
 El límite de referencia es tres subagentes concurrentes; Codex usa los roles pertinentes
 en varias tandas. La sesión o las políticas de la cuenta pueden imponer menos recursos.
 
+## Dirección visual y skills de UX/UI
+
+La descripción de uxui_designer indica cuándo utilizarlo: dirección artística, sistema
+visual, flujos, accesibilidad y microinteracciones. Sus `developer_instructions` especifican
+qué skills consultar y cuándo, desarrolladas en la política de diseño:
+
+| Skill | Uso |
+| --- | --- |
+| [Impeccable](https://github.com/pbakaus/impeccable) | Guía principal de composición, crítica y refinamiento |
+| [Frontend Design de Anthropic](https://github.com/anthropics/skills/tree/main/skills/frontend-design) | Dirección artística para producto nuevo o rediseño |
+| [UI UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) | Consultas específicas de estilos, tipografía, paletas y patrones |
+| [Emil Design Engineering](https://github.com/emilkowalski/skills/tree/main/skills/emil-design-eng) | Componentes, interacción y movimiento |
+
+El agente comprueba su disponibilidad, lee las instrucciones pertinentes y registra las
+skills realmente utilizadas. No carga las cuatro por rutina. Nombrarlas en el agente no
+las instala ni las activa: esta biblioteca no instala skills, hooks, ejecutables o servicios.
+Si faltan, se utiliza el método autocontenido de DESIGN_POLICY.md y se comunica la limitación.
+Esta separación entre descripción e instrucciones sigue el
+[esquema oficial de subagentes](https://learn.chatgpt.com/docs/agent-configuration/subagents).
+
+Cada paquete justifica la dirección visual, documenta valores y reglas del sistema,
+especifica estados e interacciones e incluye una revisión de los artefactos visibles.
+Las alternativas se exploran para productos nuevos o rediseños con libertad visual;
+los ajustes puntuales conservan el sistema existente. Las decisiones y especificaciones
+se guardan en DESIGN.md; la revisión, evidencias y skills usadas, en REVIEW.md.
+Elegir una dirección no equivale a aprobar el diseño y sus flujos.
+
+Developer implementa la especificación aprobada y QA verifica su cumplimiento. UX/UI puede
+revisar la interfaz sin editar la aplicación. Cuando los visuales originales se hayan
+retirado, la comprobación usa la especificación conservada y declara los límites de una
+comparación visual; ninguna skill autoriza a recrearlos ni a eludir la aprobación.
+
 ## Una rama y una PR por tarea
 
 Cada tarea con cambios, incluida documentación o configuración, usa una rama
@@ -76,7 +114,7 @@ revisados. Si cambia el contenido, los commits o la base, hay que volver a revis
 Las continuaciones mantienen la misma rama y PR; las consultas sin cambios no generan PR.
 No se fusiona automáticamente ni se hace push directo a `main`.
 
-Los tres prompts aplican este flujo. Bootstrap y actualización lo instalan en el bloque
+Los cuatro prompts aplican este flujo. Bootstrap y actualización lo instalan en el bloque
 de `AGENTS.md` y en los siete roles, conservando personalizaciones. Si falta acceso, remoto,
 `main` o revisión independiente, se informa del paso pendiente sin simular su cumplimiento.
 Una carpeta sin Git puede recibir archivos locales, pero rama y PR quedan pendientes.
@@ -230,13 +268,13 @@ la ausencia de dependencias externas y las reglas de conservación antes de publ
 Mantén sincronizados la política y el procedimiento de diseño entre bootstrap y
 actualización, y el contexto compartido con el segundo prompt.
 
-Se revisaron los tres prompts, la sincronización de política y registros y los
+La validación estática comprueba los cuatro prompts, la sincronización de política y registros y los
 dieciséis bloques TOML incluidos (siete roles y un config en cada prompt). Se comprobó
 que todos los roles contienen el límite de aprobación y que los registros nuevos
 empiezan pending sin evidencia inventada.
 El catálogo local de Codex consultado el 2026-10-16 lista gpt-6-astra y gpt-6.1-sol,
 ambos con high. No se realizó inferencia ni se asumió disponibilidad en otras cuentas. No se ha ejecutado
-una instalación mediante inferencia para validar la versión 2.6; se comprueba en la sesión
+una instalación mediante inferencia para validar la versión 2.7; se comprueba en la sesión
 destino. Las 31 pruebas automatizadas de la versión 1 pertenecen a su instalador anterior.
 La release v1.0.0 queda como historial. Para incorporar esta versión a un proyecto ya
 instalado, copia el prompt 03 en su sesión. Editar esta biblioteca no actualiza los proyectos.

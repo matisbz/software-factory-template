@@ -1,6 +1,6 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.6.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Versión de prompt: **2.7.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
 Escribe o actualiza `docs/project/CONTEXT.md` y continúa con la fase de diseño y aprobación
 instalada por el bootstrap, usando la información que te doy aquí:
 
@@ -14,6 +14,9 @@ instalada por el bootstrap, usando la información que te doy aquí:
 - Criterios de éxito: <rellenar o dejar pendiente>
 - Referencias visuales o sistema de diseño: <usar el contexto existente o dejar pendiente>
 - Dispositivos y tamaños relevantes: <usar el contexto existente o dejar pendiente>
+- Identidad que conservar y libertad para cambiarla: <usar el contexto existente o dejar pendiente>
+- Referencias que gustan/que evitar y por qué: <usar el contexto existente o dejar pendiente>
+- Tono, recursos gráficos, densidad y movimiento: <usar el contexto existente o dejar pendiente>
 
 Si dejo un campo vacío o con su marcador, trátalo como desconocido. Puedes inferir
 tecnología y convenciones del código existente, citando las fuentes; no inventes
@@ -187,6 +190,16 @@ Estos campos documentan una regla del proyecto; no son opciones de configuració
 - Ubicación de migraciones, historial y procedimiento de aplicación/verificación:
 - Sistema de UI, accesibilidad y dispositivos:
 - Entornos y límites entre desarrollo, pruebas y producción:
+
+## Dirección visual e interacción
+
+- Identidad y componentes existentes que deben conservarse:
+- Referencias visuales y qué interesa de cada una:
+- Ejemplos o tratamientos que evitar y motivo:
+- Libertad visual: refinamiento, ampliación o rediseño; decisiones ya fijadas:
+- Tono, contenido representativo y recursos gráficos disponibles:
+- Densidad, frecuencia de uso, interacción y movimiento esperados:
+- Dispositivos, tamaños y necesidades de accesibilidad relevantes:
 
 ## Trabajo y validación
 
