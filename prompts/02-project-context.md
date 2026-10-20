@@ -1,6 +1,6 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.3.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Versión de prompt: **2.4.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
 Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy aquí:
 
 - Nombre y propósito: <rellenar o dejar pendiente>
@@ -96,6 +96,10 @@ No incluyas contraseñas, tokens, datos personales reales ni valores de secretos
   bloqueados hasta aprobación explícita del usuario de diseño Y flujos, versión y alcance.
 - La planificación de negocio no constituye aprobación. El registro conserva la evidencia real.
 - Una revisión del contexto que altere lo aprobado requiere diseño actualizado y nueva aprobación.
+- Tras aprobar, retirar propuestas según DESIGN_POLICY.md y conservar especificación ligera,
+  manifiestos y evidencia; verificar esa retención sin exigir los visuales eliminados.
+- Eliminar scripts y outputs temporales al terminar cada prueba, incluso con fallo o cancelación;
+  conservar tests permanentes y archivos ajenos e informar de residuos pendientes.
 
 Estos campos documentan una regla del proyecto; no son opciones de configuración de Codex.
 

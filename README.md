@@ -1,7 +1,7 @@
 # Software Factory: biblioteca de prompts
 
 Este repositorio privado mantiene **prompts completos para copiar y pegar** en sesiones
-de Codex Desktop dentro de cada proyecto. Versión actual: **2.3.0**.
+de Codex Desktop dentro de cada proyecto. Versión actual: **2.4.0**.
 
 ## Uso
 
@@ -109,6 +109,28 @@ proceso mediante instrucciones y evidencia, no un sandbox ni una opción nativa 
 Si las reglas no se pudieron aplicar o faltan documentos/evidencia, debe indicarse el
 bloqueo y sus pendientes, en vez de afirmar que ya está autorizado desarrollar.
 
+## Limpieza de pruebas y propuestas aprobadas
+
+Al terminar cada prueba se eliminan los scripts auxiliares y outputs generados para ella:
+logs, capturas, vídeos, trazas, reportes, cobertura y datos desechables. Se aplica también
+si falla o se cancela; se conserva un resultado y diagnóstico breve en la entrega.
+Los tests permanentes de la suite, sus fixtures mantenidos y los archivos ajenos se conservan.
+Cada agente limpia sus temporales y el orquestador comprueba e informa de cualquier residuo.
+
+Tras aprobar diseño y flujos se eliminan las propuestas locales de esa versión, incluidas
+maquetas, prototipos y exportaciones, aunque todavía no se haya encargado la implementación.
+Se conserva una especificación textual ligera, los manifiestos y la evidencia de aprobación
+en `docs/uxui/approved/<version>/` y `docs/uxui/DESIGN_APPROVAL.md`. La transición verifica
+huellas antes de borrar y deja constancia de lo retirado; futuras sesiones validan lo
+conservado sin exigir ni recrear los visuales eliminados. QA usa esa especificación y
+comunica si una comprobación necesita el original visual ya retirado.
+
+Las propuestas pendientes y los originales compartidos en herramientas externas se conservan.
+No se guardan copias comprimidas de los desechables ni se borra por extensión o antigüedad.
+Para aplicar estas reglas a una fábrica existente, usa el prompt 03; el prompt 04 gestiona
+la limpieza de diseños aprobados tras verificar su evidencia. Editar esta biblioteca no
+limpia otros proyectos automáticamente.
+
 ## Modelos asignados
 
 | Rol | Modelo base | Razonamiento |
@@ -192,7 +214,7 @@ que todos los roles contienen el límite de aprobación y que los registros nuev
 empiezan pending sin evidencia inventada.
 El catálogo local de Codex consultado el 2026-10-16 lista gpt-6-astra y gpt-6.1-sol,
 ambos con high. No se realizó inferencia ni se asumió disponibilidad en otras cuentas. No se ha ejecutado
-una instalación mediante inferencia para validar la versión 2.3; se comprueba en la sesión
+una instalación mediante inferencia para validar la versión 2.4; se comprueba en la sesión
 destino. Las 31 pruebas automatizadas de la versión 1 pertenecen a su instalador anterior.
 La release v1.0.0 queda como historial. Para incorporar esta versión a un proyecto ya
 instalado, copia el prompt 03 en su sesión. Editar esta biblioteca no actualiza los proyectos.

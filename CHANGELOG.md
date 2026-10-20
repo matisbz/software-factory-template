@@ -2,6 +2,16 @@
 
 ## Sin publicar
 
+## 2.4.0 — 2026-10-20
+
+- Limpieza de scripts auxiliares y outputs temporales al terminar cada prueba, también
+  con fallo o cancelación; se conservan tests permanentes y archivos ajenos.
+- Retirada de propuestas de diseño tras aprobar diseño y flujos, conservando solo
+  especificación textual ligera, manifiestos y evidencia humana verificable.
+- Transición de retención registrada antes de borrar, reanudación de limpiezas pendientes
+  y comprobación de vigencia sin exigir ni recrear los visuales retirados.
+- Reglas sincronizadas en los cuatro prompts, orquestador y siete roles; la actualización
+  conserva aprobaciones existentes y el prompt de diseño gestiona su limpieza.
 - uxui_designer pasa a GPT-6 Astra/high en los prompts de instalación y actualización
   y en la documentación de modelos asignados.
 
