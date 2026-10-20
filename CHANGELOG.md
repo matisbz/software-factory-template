@@ -1,5 +1,10 @@
 # Historial de versiones
 
+## Sin publicar
+
+- uxui_designer pasa a GPT-6 Astra/high en los prompts de instalación y actualización
+  y en la documentación de modelos asignados.
+
 ## 2.3.0 — 2026-10-19
 
 - Séptimo rol backend_engineer, con GPT-6.1 Sol/high y especialización en Supabase

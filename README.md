@@ -116,14 +116,14 @@ bloqueo y sus pendientes, en vez de afirmar que ya está autorizado desarrollar.
 | Orquestador (sesión principal) | gpt-6-astra | high |
 | architect | gpt-6-astra | high |
 | solution_designer | gpt-6.1-sol | high |
-| uxui_designer | gpt-6.1-sol | high |
+| uxui_designer | gpt-6-astra | high |
 | developer | gpt-6.1-sol | high |
 | backend_engineer | gpt-6.1-sol | high |
 | qa_engineer | gpt-6.1-sol | high |
 | pr_reviewer | gpt-6-astra | high |
 
-Astra se reserva para arquitectura, coordinación y revisión crítica. Sol se utiliza
-para diseño, implementación y validación. Esta distribución es una decisión de diseño
+Astra se utiliza para arquitectura, coordinación, diseño UX/UI y revisión crítica. Sol
+se utiliza para diseño de la solución, implementación y validación. Esta distribución es una decisión de diseño
 para la biblioteca, apoyada en la documentación oficial; no es una asignación oficial
 de OpenAI por puesto. El razonamiento high es el punto de partida de esta versión.
 

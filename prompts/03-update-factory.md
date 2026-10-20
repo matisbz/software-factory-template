@@ -27,7 +27,7 @@ si esos identificadores están disponibles en la cuenta o espacio de esta sesió
 | Orquestador (sesión principal) | gpt-6-astra | high | Coordinación, decisiones y coherencia del resultado |
 | architect | gpt-6-astra | high | Decisiones de arquitectura y riesgos técnicos |
 | solution_designer | gpt-6.1-sol | high | Requisitos, contratos y solución implementable |
-| uxui_designer | gpt-6.1-sol | high | Flujos, estados de interfaz y accesibilidad |
+| uxui_designer | gpt-6-astra | high | Flujos, estados de interfaz y accesibilidad |
 | developer | gpt-6.1-sol | high | Aplicación e integración |
 | backend_engineer | gpt-6.1-sol | high | Backend, persistencia y operaciones de Supabase |
 | qa_engineer | gpt-6.1-sol | high | Verificación independiente y regresiones |
@@ -421,7 +421,7 @@ Devuelve una especificación breve y las decisiones pendientes que realmente blo
 
 ```toml
 name = "uxui_designer"
-model = "gpt-6.1-sol"
+model = "gpt-6-astra"
 model_reasoning_effort = "high"
 description = "Diseña flujos y estados de interfaz accesibles acordes con el sistema visual del proyecto."
 developer_instructions = """
