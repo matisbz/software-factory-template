@@ -1,6 +1,6 @@
 # Diseñar y obtener aprobación de los flujos UX/UI antes de desarrollar
 
-Versión de prompt y política: **2.4.0**. Trabaja en el proyecto local de ESTA sesión.
+Versión de prompt y política: **2.5.0**. Trabaja en el proyecto local de ESTA sesión.
 Quiero revisar y aprobar explícitamente el diseño Y los flujos UX/UI antes de que se
 implemente nada de la aplicación. Este prompt es autónomo: contiene las reglas y los
 registros necesarios; no necesitas clonar ni consultar la biblioteca de prompts.
@@ -16,6 +16,50 @@ registros necesarios; no necesitas clonar ni consultar la biblioteca de prompts.
 Los marcadores no rellenados no son requisitos ni autorizaciones. Lee el contexto y
 solo lo necesario para verificar el sistema existente. Pregunta por decisiones de
 negocio que realmente bloqueen el diseño y avanza en las demás. Declara los supuestos.
+
+## Flujo Git obligatorio por tarea
+
+Cada tarea que modifique archivos del proyecto debe trabajar en una rama propia
+`codex/<descripcion-de-la-tarea>` y terminar con una pull request hacia `main`, solo
+cuando `pr_reviewer` haya revisado el cambio final y lo declare conforme. Se aplica
+incluso a documentación, configuración de la fábrica y tareas pequeñas. Una consulta
+sin cambios no requiere rama ni PR vacías. Las continuaciones de la misma tarea usan
+su rama y PR existentes; una tarea distinta no reutiliza una rama de otro encargo.
+
+El orquestador coordina este flujo:
+
+1. Antes de editar, comprueba raíz real, estado de Git, remoto y rama. Actualiza la
+   referencia remota de `main` y crea la rama desde ella; no trabajes ni hagas commits
+   directamente en `main`. Conserva cambios ajenos y aísla el trabajo si el checkout
+   está ocupado; no los arrastres a la rama ni uses reset, stash o force-push para limpiarlo.
+2. Implementa únicamente el alcance autorizado y ejecuta las comprobaciones pertinentes.
+   Esta regla no elimina el requisito de aprobación de diseño y flujos ni autoriza
+   implementar por el mero hecho de crear una rama.
+3. Prepara commits solo con los archivos de la tarea y solicita a `pr_reviewer` una
+   revisión independiente, sin editar, del diff completo contra `main`. Identifica los
+   SHA de base y HEAD y facilita alcance, criterios y resultados de validación.
+4. Corrige todos los hallazgos pendientes y repite la revisión hasta recibir un dictamen
+   explícito de CONFORME, sin hallazgos abiertos ni comprobaciones necesarias pendientes.
+   Un resultado incompleto, la falta de revisor o la autorrevisión del implementador no
+   sustituyen ese dictamen. Si cambia el contenido, los commits o la base revisados,
+   vuelve a validar lo afectado y solicita revisión de la versión final.
+5. Con revisión conforme, verifica que los SHA siguen vigentes, que no quedan cambios
+   de la tarea sin incluir y que el diff no contiene archivos ajenos, secretos ni temporales.
+   Sube la rama y crea la PR con base `main`; si ya existe para esta tarea, actualízala.
+   Incluye resumen, validación y dictamen con los SHA revisados. Comprueba base y HEAD
+   remotos y entrega el enlace real; no declares una PR creada si la operación falló.
+
+Este encargo autoriza al orquestador a crear la rama, hacer commits, subirla y abrir o
+actualizar la PR de la tarea en el remoto del proyecto sin pedir otra confirmación.
+No autoriza fusionar la PR, activar auto-merge, hacer push directo a `main` ni desplegar.
+La revisión del agente es un requisito previo a crear la PR y no equivale a un APPROVE
+publicado en GitHub. Los subagentes no gestionan ramas ni publican por iniciativa propia.
+
+Si faltan Git, `main`, un remoto inequívoco, acceso de escritura o un revisor independiente,
+explica el impedimento y deja pendiente el paso afectado; no inventes revisiones ni eludas
+el flujo publicando sin conformidad. En una carpeta sin Git se permite preparar los archivos
+locales del encargo, comunicando que rama y PR quedan pendientes; no crees un repositorio
+remoto ni cambies su configuración para resolverlo por tu cuenta.
 
 ## Activar y conservar el límite
 
@@ -86,14 +130,16 @@ Coordina los roles disponibles con sus modelos configurados, sin forzar otros mo
   sin crear esquemas, migraciones ni ejecutar escrituras remotas.
 - qa_engineer: revisión de coherencia de recorridos, estados y accesibilidad, sin tests
   de implementación ni comandos que generen código o cambien la aplicación.
-- pr_reviewer: revisión del paquete de diseño y sus pendientes cuando aporte valor.
+- pr_reviewer: revisión independiente obligatoria del diff final antes de crear la PR,
+  incluida la documentación del paquete de diseño y sus pendientes.
 
 No asignes implementación a developer, backend_engineer ni a ningún otro rol durante esta
 fase, ni la hagas tú. Delega únicamente análisis o artefactos de diseño con propiedad
 exclusiva de sus archivos. Si no aparecen roles/herramientas, informa y realiza tú el
 trabajo de diseño posible, conservando el
 mismo bloqueo. No crees nuevos agentes, procesos Codex anidados, chats separados, SDKs,
-servicios, claves ni APIs de pago para simularlos. No hagas commits, pushes o publicaciones.
+servicios, claves ni APIs de pago para simularlos. Aplica el flujo Git obligatorio a los
+archivos de esta tarea; la conformidad de pr_reviewer no aprueba el diseño por el usuario.
 
 Primero comprueba si existe un paquete que ya cubra exactamente el encargo. Si está
 pending y no hay cambios solicitados, continúa su revisión sin recrearlo. Si está aprobado
@@ -204,7 +250,7 @@ Estos campos documentan una regla del proyecto; no son opciones de configuració
 ```markdown
 # Política de aprobación de diseño y flujos UX/UI
 
-Versión de política: 2.4.0. Este es un acuerdo de trabajo del proyecto, no una opción
+Versión de política: 2.5.0. Este es un acuerdo de trabajo del proyecto, no una opción
 nativa de permisos de Codex. Obliga al orquestador y a todos los subagentes.
 
 ## Condición obligatoria para implementar
