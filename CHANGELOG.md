@@ -2,6 +2,17 @@
 
 ## Sin publicar
 
+## 2.6.0 — 2026-10-20
+
+- Procedimiento completo de diseño y aprobación integrado en la política que instalan
+  bootstrap y actualización; se elimina el prompt separado 04-design-and-approval.md.
+- El orquestador inicia o retoma el diseño al recibir contexto o un encargo de producto,
+  conservando versiones pendientes y aprobaciones vigentes. Instalar o actualizar la
+  fábrica no inicia por sí solo trabajo de producto.
+- El prompt de contexto continúa con pantallas y recorridos revisables sin exigir otro
+  prompt. Aprobar mantiene la exigencia de un encargo de desarrollo para implementar.
+- Se conservan presentación, evidencia verificable, revisión, limpieza y límites de alcance.
+
 ## 2.5.0 — 2026-10-20
 
 - Rama propia por tarea con cambios y pull request hacia main únicamente después de

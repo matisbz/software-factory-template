@@ -1,7 +1,7 @@
 # Software Factory: biblioteca de prompts
 
 Este repositorio privado mantiene **prompts completos para copiar y pegar** en sesiones
-de Codex Desktop dentro de cada proyecto. Versión actual: **2.5.0**.
+de Codex Desktop dentro de cada proyecto. Versión actual: **2.6.0**.
 
 ## Uso
 
@@ -12,20 +12,23 @@ de Codex Desktop dentro de cada proyecto. Versión actual: **2.5.0**.
 3. Revisa pendientes y abre una conversación nueva en la raíz para cargar las reglas;
    confía en el proyecto mediante Codex si corresponde tras revisar los archivos.
 4. Rellena y pega [02-project-context.md](prompts/02-project-context.md). Preparará el
-   contexto y una primera tarea de diseño, sin implementar la aplicación.
-5. Copia y pega [04-design-and-approval.md](prompts/04-design-and-approval.md). Codex
-   prepara pantallas y recorridos revisables, presenta una versión y espera tu decisión.
-6. Cuando lo decidas, aprueba explícitamente **diseño Y flujos**, identificando versión
+   contexto y continuará con el diseño: pantallas y recorridos revisables, presentación
+   de una versión y espera de tu decisión. Esta fase ya está incluida en el bootstrap;
+   no necesitas pegar un prompt de diseño separado. También puedes describir directamente
+   tu encargo en la nueva conversación para activar el mismo procedimiento.
+5. Cuando lo decidas, aprueba explícitamente **diseño Y flujos**, identificando versión
    y alcance. Si ya encargaste desarrollar ese alcance, o lo encargas en ese mensaje,
    comienza la implementación sin pedir otra autorización. Si únicamente pediste diseño
    y no hay encargo de desarrollo, se registra la decisión y se espera ese encargo.
 
 Para un proyecto que ya tenía instalada la fábrica, pega primero
-[03-update-factory.md](prompts/03-update-factory.md) para aplicar también las reglas a
-los siete roles, y después el prompt 04. El actualizador conserva personalizaciones y
-aprobaciones vigentes; si hay conflictos que impidan persistir el límite, informa y deja
+[03-update-factory.md](prompts/03-update-factory.md) para instalar el procedimiento integrado
+conservando las reglas de los siete roles. Después, aporta o actualiza el contexto o pide
+continuar el diseño del alcance deseado, sin otro prompt de diseño. El actualizador conserva
+personalizaciones y aprobaciones vigentes; si hay conflictos que impidan persistir el límite, informa y deja
 la implementación bloqueada en esa sesión. Comprueba esos pendientes antes de continuar.
-Cada prompt es autónomo y contiene los documentos/configuraciones que requiere.
+Bootstrap y actualización incluyen los documentos y configuraciones completos. El prompt de
+contexto utiliza el procedimiento de diseño instalado en el proyecto.
 
 ## Qué contiene este repositorio
 
@@ -36,8 +39,7 @@ software-factory-template/
 └── prompts/
     ├── 01-bootstrap.md
     ├── 02-project-context.md
-    ├── 03-update-factory.md
-    └── 04-design-and-approval.md
+    └── 03-update-factory.md
 ```
 
 La configuración de agentes está **dentro del texto de los prompts**. Los archivos TOML,
@@ -74,7 +76,7 @@ revisados. Si cambia el contenido, los commits o la base, hay que volver a revis
 Las continuaciones mantienen la misma rama y PR; las consultas sin cambios no generan PR.
 No se fusiona automáticamente ni se hace push directo a `main`.
 
-Los cuatro prompts aplican este flujo. Bootstrap y actualización lo instalan en el bloque
+Los tres prompts aplican este flujo. Bootstrap y actualización lo instalan en el bloque
 de `AGENTS.md` y en los siete roles, conservando personalizaciones. Si falta acceso, remoto,
 `main` o revisión independiente, se informa del paso pendiente sin simular su cumplimiento.
 Una carpeta sin Git puede recibir archivos locales, pero rama y PR quedan pendientes.
@@ -146,9 +148,9 @@ comunica si una comprobación necesita el original visual ya retirado.
 
 Las propuestas pendientes y los originales compartidos en herramientas externas se conservan.
 No se guardan copias comprimidas de los desechables ni se borra por extensión o antigüedad.
-Para aplicar estas reglas a una fábrica existente, usa el prompt 03; el prompt 04 gestiona
-la limpieza de diseños aprobados tras verificar su evidencia. Editar esta biblioteca no
-limpia otros proyectos automáticamente.
+Para aplicar estas reglas a una fábrica existente, usa el prompt 03. El procedimiento de
+diseño instalado por el bootstrap y el actualizador gestiona la limpieza tras verificar
+la evidencia de aprobación. Editar esta biblioteca no limpia otros proyectos automáticamente.
 
 ## Modelos asignados
 
@@ -224,16 +226,17 @@ Para comprobar la activación en una conversación nueva del destino, puedes ped
 Edita el texto en esta biblioteca y versiona las mejoras. Mantén idéntico el contenido
 literal de la fábrica en bootstrap y actualizador para una misma versión. Actualiza
 las versiones dentro de los prompts y CHANGELOG.md. Comprueba la sintaxis de los bloques,
-la ausencia de dependencias externas y las reglas de conservación antes de publicar. Mantén sincronizada la política entre
-bootstrap, actualización y diseño, y el contexto compartido con el segundo prompt.
+la ausencia de dependencias externas y las reglas de conservación antes de publicar.
+Mantén sincronizados la política y el procedimiento de diseño entre bootstrap y
+actualización, y el contexto compartido con el segundo prompt.
 
-Se revisaron los cuatro prompts, la sincronización de política y registros y los
+Se revisaron los tres prompts, la sincronización de política y registros y los
 dieciséis bloques TOML incluidos (siete roles y un config en cada prompt). Se comprobó
 que todos los roles contienen el límite de aprobación y que los registros nuevos
 empiezan pending sin evidencia inventada.
 El catálogo local de Codex consultado el 2026-10-16 lista gpt-6-astra y gpt-6.1-sol,
 ambos con high. No se realizó inferencia ni se asumió disponibilidad en otras cuentas. No se ha ejecutado
-una instalación mediante inferencia para validar la versión 2.5; se comprueba en la sesión
+una instalación mediante inferencia para validar la versión 2.6; se comprueba en la sesión
 destino. Las 31 pruebas automatizadas de la versión 1 pertenecen a su instalador anterior.
 La release v1.0.0 queda como historial. Para incorporar esta versión a un proyecto ya
 instalado, copia el prompt 03 en su sesión. Editar esta biblioteca no actualiza los proyectos.

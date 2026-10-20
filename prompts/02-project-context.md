@@ -1,7 +1,8 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.5.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
-Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy aquí:
+Versión de prompt: **2.6.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Escribe o actualiza `docs/project/CONTEXT.md` y continúa con la fase de diseño y aprobación
+instalada por el bootstrap, usando la información que te doy aquí:
 
 - Nombre y propósito: <rellenar o dejar pendiente>
 - Usuarios y problema principal: <rellenar o dejar pendiente>
@@ -11,6 +12,8 @@ Escribe o actualiza `docs/project/CONTEXT.md` usando la información que te doy 
 - Estado actual y fuentes de requisitos: <rellenar o dejar pendiente>
 - Prioridades, plazos y presupuesto: <rellenar o dejar pendiente>
 - Criterios de éxito: <rellenar o dejar pendiente>
+- Referencias visuales o sistema de diseño: <usar el contexto existente o dejar pendiente>
+- Dispositivos y tamaños relevantes: <usar el contexto existente o dejar pendiente>
 
 Si dejo un campo vacío o con su marcador, trátalo como desconocido. Puedes inferir
 tecnología y convenciones del código existente, citando las fuentes; no inventes
@@ -25,7 +28,8 @@ implementación, scaffolding, dependencias, servicios o migraciones por este enc
 
 Consulta docs/uxui/DESIGN_POLICY.md y docs/uxui/DESIGN_APPROVAL.md si existen. Su ausencia,
 corrupción o falta de evidencia implica estado efectivo bloqueado, no excepción. No marques
-approved, no copies una frase de ejemplo como evidencia y no reinicies una aprobación válida.
+approved por actualizar el contexto, no copies ejemplos como evidencia ni reinicies una
+aprobación válida. Registra approved solo tras una decisión auténtica según la política.
 En un contexto existente añade la sección de aprobación que figura en la estructura inferior,
 preservando las secciones de negocio. Si contradice una regla local que permite desarrollar
 sin aprobación, conserva esa información como antecedente y registra el nuevo requisito del
@@ -94,8 +98,9 @@ remoto ni cambies su configuración para resolverlo por tu cuenta.
 3. Te autorizo a usar los roles ya cargados cuando aporten valor: solution_designer para
    concretar alcance, architect para restricciones técnicas, uxui_designer si hay interfaz
    y backend_engineer para analizar datos, contratos y entornos si el proyecto lo necesita.
-   Dales subtareas de análisis sin editar; tú integras y escribes el contexto. No necesitas
-   ejecutarlos todos. Usa el modelo y esfuerzo que tenga configurado cada rol; no los
+   Para preparar el contexto, dales subtareas de análisis sin editar; tú integras y lo
+   escribes. Para diseñar, sigue el reparto de la política instalada. No necesitas ejecutarlos
+   todos. Usa el modelo y esfuerzo que tenga configurado cada rol; no los
    reemplaces por los de la sesión ni edites sus TOML. Si los roles no están disponibles,
    comunica la limitación y realiza tú ese análisis, sin simular ejecuciones ni lanzar
    procesos, chats nuevos o APIs para sustituirlos. No reinstales agentes en este encargo.
@@ -111,10 +116,20 @@ remoto ni cambies su configuración para resolverlo por tu cuenta.
 6. No implementes funcionalidades, cambies configuración, elijas un stack nuevo, añadas
    dependencias, ejecutes migraciones ni conectes proveedores por tu cuenta. Aplica el flujo
    Git obligatorio al cambio de contexto; no despliegues ni envíes mensajes por este encargo.
-7. Entrega el contexto actualizado, fuentes y comprobaciones reales, decisiones abiertas
-   y una primera tarea de DISEÑO con criterios de aceptación. No propongas la implementación
-   como siguiente paso hasta la aprobación. Indica que el prompt de diseño debe preparar
-   pantallas y recorridos revisables para que el usuario decida; no ejecutes esa tarea aún.
+7. Tras actualizar el contexto, continúa con «Inicio de la fase de diseño» de
+   `docs/uxui/DESIGN_POLICY.md`, instalada por el bootstrap o el actualizador. Prepara o
+   retoma las pantallas y recorridos revisables del alcance solicitado, preséntalos y espera
+   la decisión del usuario sobre diseño Y flujos de esa versión. No pidas otro prompt para
+   iniciar esa fase. Usa las herramientas autorizadas y pregunta solo por datos que bloqueen.
+   Si solo mejora la documentación del mismo alcance, conserva el paquete y su aprobación;
+   no crees una versión por rutina. Si faltan la política o el procedimiento integrado,
+   entrega el contexto e indica que debe instalarse o actualizarse la fábrica con 01 o 03,
+   según corresponda; no inventes reglas instaladas ni una aprobación.
+8. Entrega el contexto, fuentes y comprobaciones reales, decisiones abiertas y los artefactos
+   de diseño preparados o sus pendientes. Registra únicamente la decisión auténtica del usuario
+   y aplica la limpieza y transición previstas en la política. Este prompt encarga contexto
+   y diseño; no encarga implementar. Una aprobación vigente solo permite iniciar desarrollo
+   si también existe un encargo de implementación para ese alcance.
 
 ## Estructura para un contexto nuevo
 
