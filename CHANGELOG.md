@@ -2,6 +2,13 @@
 
 ## Sin publicar
 
+## 2.8.0 — 2026-11-25
+
+- GPT-6.2 Astra para el orquestador, architect, uxui_designer y pr_reviewer.
+- GPT-6.2 Sol para solution_designer, developer, backend_engineer y qa_engineer,
+  y como alternativa si el modelo asignado a un rol está ausente. Ambos modelos
+  admiten el razonamiento `high` configurado en la fábrica.
+
 ## 2.7.0 — 2026-10-20
 
 - Prompt opcional 04-design-package.md para encargar o refinar un paquete UX/UI; el

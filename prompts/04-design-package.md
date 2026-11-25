@@ -1,6 +1,6 @@
 # Preparar o refinar el paquete de diseño UX/UI
 
-Versión de prompt: **2.7.0**. Ejecuta este encargo en el proyecto destino de esta sesión.
+Versión de prompt: **2.8.0**. Ejecuta este encargo en el proyecto destino de esta sesión.
 Quiero un paquete de diseño visual y flujos revisable antes de implementar.
 Este prompt es una entrada opcional al procedimiento que instala la fábrica; el contexto
 del prompt 02 y un encargo directo también lo activan. No reinstales la fábrica.

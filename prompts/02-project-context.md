@@ -1,6 +1,6 @@
 # Inicializar o actualizar el contexto de este proyecto
 
-Versión de prompt: **2.7.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
+Versión de prompt: **2.8.0**. Trabaja en el proyecto local de ESTA sesión de Codex.
 Escribe o actualiza `docs/project/CONTEXT.md` y continúa con la fase de diseño y aprobación
 instalada por el bootstrap, usando la información que te doy aquí:
 
