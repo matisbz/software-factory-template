@@ -1,7 +1,7 @@
 # Software Factory: biblioteca de prompts
 
 Este repositorio privado mantiene **prompts completos para copiar y pegar** en sesiones
-de Codex Desktop dentro de cada proyecto. Versión actual: **2.7.0**.
+de Codex Desktop dentro de cada proyecto. Versión actual: **2.8.0**.
 
 ## Uso
 
@@ -194,14 +194,14 @@ la evidencia de aprobación. Editar esta biblioteca no limpia otros proyectos au
 
 | Rol | Modelo base | Razonamiento |
 | --- | --- | --- |
-| Orquestador (sesión principal) | gpt-6-astra | high |
-| architect | gpt-6-astra | high |
-| solution_designer | gpt-6.1-sol | high |
-| uxui_designer | gpt-6-astra | high |
-| developer | gpt-6.1-sol | high |
-| backend_engineer | gpt-6.1-sol | high |
-| qa_engineer | gpt-6.1-sol | high |
-| pr_reviewer | gpt-6-astra | high |
+| Orquestador (sesión principal) | gpt-6.2-astra | high |
+| architect | gpt-6.2-astra | high |
+| solution_designer | gpt-6.2-sol | high |
+| uxui_designer | gpt-6.2-astra | high |
+| developer | gpt-6.2-sol | high |
+| backend_engineer | gpt-6.2-sol | high |
+| qa_engineer | gpt-6.2-sol | high |
+| pr_reviewer | gpt-6.2-astra | high |
 
 Astra se utiliza para arquitectura, coordinación, diseño UX/UI y revisión crítica. Sol
 se utiliza para diseño de la solución, implementación y validación. Esta distribución es una decisión de diseño
@@ -209,7 +209,7 @@ para la biblioteca, apoyada en la documentación oficial; no es una asignación 
 de OpenAI por puesto. El razonamiento high es el punto de partida de esta versión.
 
 Los siete TOML incluidos en bootstrap y actualización contienen `model` y
-`model_reasoning_effort`. Para el orquestador, selecciona GPT-6 Astra y razonamiento
+`model_reasoning_effort`. Para el orquestador, selecciona GPT-6.2 Astra y razonamiento
 alto en Codex cuando estén disponibles: es la sesión principal, no un subagente adicional.
 El prompt conserva el modelo actual de esa sesión y los ajustes principales del proyecto.
 
@@ -272,9 +272,10 @@ La validación estática comprueba los cuatro prompts, la sincronización de pol
 dieciséis bloques TOML incluidos (siete roles y un config en cada prompt). Se comprobó
 que todos los roles contienen el límite de aprobación y que los registros nuevos
 empiezan pending sin evidencia inventada.
-El catálogo local de Codex consultado el 2026-10-16 lista gpt-6-astra y gpt-6.1-sol,
-ambos con high. No se realizó inferencia ni se asumió disponibilidad en otras cuentas. No se ha ejecutado
-una instalación mediante inferencia para validar la versión 2.7; se comprueba en la sesión
-destino. Las 31 pruebas automatizadas de la versión 1 pertenecen a su instalador anterior.
+El 25 de noviembre de 2026 se confirmó en el catálogo local de Codex que
+`gpt-6.2-astra` y `gpt-6.2-sol` admiten razonamiento `high`. La validación de la
+versión 2.8.0 cubre la plantilla. La instalación y la disponibilidad efectiva de
+los modelos se comprueban en cada proyecto destino. Las 31 pruebas automatizadas de
+la versión 1 pertenecen a su instalador anterior.
 La release v1.0.0 queda como historial. Para incorporar esta versión a un proyecto ya
 instalado, copia el prompt 03 en su sesión. Editar esta biblioteca no actualiza los proyectos.
